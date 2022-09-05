@@ -8,21 +8,28 @@ const styles = {
   textDecoration: 'underline',
 }
 
-const RepoList = (props) => {
-  return (
-    <div>
-      <h4> Repo List Component </h4>
-      There are {props.repos.length} repos.
-      <div style={styles}>
-        <div className="username">Username</div>
-        <div className="repoName">Repo name</div>
-        <div className="forks">Forks counts</div>
-      </div>
+class RepoList extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
       <div>
-        {props.repos.map(repo => <Repo key={repo.id} repo={repo} />)}
+        <h4> Repo List Component </h4>
+        There are {this.props.repos.length} repos.
+        <div style={styles}>
+          <div className="username">Username</div>
+          <div className="repoName">Repo name</div>
+          <div className="forks">Forks counts</div>
+        </div>
+        <div>
+          {this.props.repos.map(repo => <Repo key={repo.id} repo={repo} />)}
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
+
 }
 
 export default RepoList;

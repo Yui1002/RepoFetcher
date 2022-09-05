@@ -40,7 +40,10 @@ app.get('/repos', function (req, res) {
   db.getTop25Repos()
     .then(top25repos => {
       res.send(top25repos);
-    });
+    })
+    .catch(err => {
+      res.send(500).send(err);
+    })
 });
 
 app.listen(port, () => {
